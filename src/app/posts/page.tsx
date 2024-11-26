@@ -1,28 +1,44 @@
+'use client';
+import Paginate from '../components/Paginate';
+import Post from '../components/Posts.component';
+import usePost from '../hooks/post.hook';
+export default function Posts() {
 
-import Link from 'next/link';
-import React from 'react'
 
-export default async function Posts() {
-    const res = await fetch('https://jsonplaceholder.typicode.com/posts');
-  const posts = await res.json();
-// console.log({posts})
+let {totalPages , paginatedPosts , handlePageChange  , query  , error ,setQuery , currentPage } = usePost()
+
   return (
-    <section >
+    <section className='p-8'>
+        {error && (
+          <p className="text-center text-red-500 my-10">
+            {error}
+          </p>
+        )}
 
+        <div className="p-8">
+        <input
+          type="text"
+          placeholder="Search by title..."
+          value={query}
+          onChange={(e) => setQuery(e.target.value)}
+          className="w-full p-3 mb-6 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          />
+          {paginatedPosts.length>0? <>
+            <Post paginatedPosts={paginatedPosts}/>
+             <Paginate
+             totalPages={totalPages}
+             handlePageChange={handlePageChange}
+             currentPage={currentPage}
+           />
+          </>
+     : 
+     <div  className='min-h-screen  flex justify-center items-center'>
 
-<div className="grid grid-cols-12 gap-3 p-8">
-  {posts.map((post) => (
-    <div
-      key={post.id}
-      className="bg-blue-950 text-white col-span-12 md:col-span-4 lg:col-span-3 text-center p-4 rounded-md"
-    >
-     
-      <h2 className="text-lg font-bold text-white ">{post.title}</h2>
-      <p className="text-sm text-white mt-2 leading-[30px]">{post.body.split(' ').slice(0,20).join(' ')}  <Link href={`/posts/${post.id}`} className='text-blue-500'>ReadMore...</Link></p>
-    </div>
-  ))}
-</div>
-
+         <span className="loader"></span>
+     </div>
+     }
+      </div>
+      
     </section>
-  )
+  );
 }
