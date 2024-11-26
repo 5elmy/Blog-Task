@@ -1,13 +1,13 @@
 import ButtonNavigate from "@/app/components/ButtonNavigate";
 import CommentForPost from "@/app/components/comment.component";
 import PostSlice from "@/app/components/postSlice";
-import usePostDetails from "@/app/hooks/postDetails.hook";
+import PostDetailsHook from "@/app/hooks/postDetails.hook";
 import {  params } from "@/app/Interfaces";
 import React from "react";
 
-export default async function postDetails({ params }:params) {
-   let { postId } = await params;
-let {post , comments }:any = await usePostDetails({postId})
+export default async function PostDetails({ params }:params) {
+   const { postId } = await params;
+const {post , comments }:any = await PostDetailsHook({postId})
   return (
     <section className=" relative">
             <ButtonNavigate button=" GO TO HOME"/>

@@ -1,11 +1,11 @@
 'use client';
 import Paginate from '../components/Paginate';
 import Post from '../components/Posts.component';
-import usePost from '../hooks/post.hook';
+import PostHook from '../hooks/post.hook';
 export default function Posts() {
 
 
-let {totalPages , paginatedPosts , handlePageChange  , query  , error ,setQuery , currentPage } = usePost()
+let {totalPages , paginatedPosts , handlePageChange  , query  , error ,setQuery , currentPage } = PostHook()
 
   return (
     <section className='p-8'>

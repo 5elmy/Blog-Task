@@ -1,15 +1,15 @@
-import React, { useEffect, useState } from 'react'
+import  { useEffect, useState } from 'react'
 import { post } from '../Interfaces';
 import { BASEURL } from '../Constants/BASEURL';
 
-export default function usePost() {
-    const [posts, setPosts] = useState<post[]>([]);
-  const [filteredPosts, setFilteredPosts] = useState<post[]>([]);
-  const [query, setQuery] = useState('');
-  const [currentPage, setCurrentPage] = useState<number>(1);
-  const itemsPerPage = 12;
-  const [error, setError] = useState<string | null>(null);
- const fetchPosts = async () => {
+export default function PostHook() {
+    let [posts, setPosts] = useState<post[]>([]);
+  let [filteredPosts, setFilteredPosts] = useState<post[]>([]);
+  let [query, setQuery] = useState('');
+  let [currentPage, setCurrentPage] = useState<number>(1);
+  let itemsPerPage = 12;
+  let [error, setError] = useState<string | null>(null);
+ let fetchPosts = async () => {
     try {
       setError(null);
       const res = await fetch(`${BASEURL}/posts`);  

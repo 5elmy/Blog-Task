@@ -13,7 +13,7 @@ export interface comment {
 }
 export interface params {params:{postId:number}}
 
-export interface PostDetailsResponse {
+export interface PostDetailsHookResponse {
     post: post;
     comments: comment[];
   }
