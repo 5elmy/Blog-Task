@@ -6,8 +6,8 @@ import {  params } from "@/app/Interfaces";
 import React from "react";
 
 export default async function PostDetails({ params }:params) {
-   const { postId } = await params;
-const {post , comments }:any = await PostDetailsHook({postId})
+    let{ postId } = await params;
+let {post , comments }:any = await PostDetailsHook({postId})
   return (
     <section className=" relative">
             <ButtonNavigate button=" GO TO HOME"/>
