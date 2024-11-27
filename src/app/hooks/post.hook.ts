@@ -12,8 +12,8 @@ export default function PostHook() {
  let fetchPosts = async () => {
     try {
       setError(null);
-      const res = await fetch(`${BASEURL}/posts`);  
-      const data = await res.json();
+      let res = await fetch(`${BASEURL}/posts`);  
+      let data = await res.json();
       setPosts(data);
       setFilteredPosts(data);
      
@@ -30,24 +30,24 @@ export default function PostHook() {
 
  
   useEffect(() => {
-    const results = posts.filter((post:post) =>
+    let results = posts.filter((post:post) =>
       post.title.toLowerCase().includes(query.toLowerCase())
     );
     setFilteredPosts(results);
   }, [query, posts]);
 
  
-  const handlePageChange = (page: number) => {
+  let handlePageChange = (page: number) => {
     setCurrentPage(page);
   };
 
   
-  const paginatedPosts = filteredPosts.slice(
+  let paginatedPosts = filteredPosts.slice(
     (currentPage - 1) * itemsPerPage,
     currentPage * itemsPerPage
   );
 
   
-  const totalPages = Math.ceil(filteredPosts.length / itemsPerPage);
+  let totalPages = Math.ceil(filteredPosts.length / itemsPerPage);
   return {totalPages , paginatedPosts , handlePageChange  , query , posts , error ,setQuery , currentPage }
 }
