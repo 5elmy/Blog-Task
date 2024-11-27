@@ -12,14 +12,14 @@ export default function PostHook() {
  const fetchPosts = async () => {
     try {
       setError(null);
-      let res = await fetch(`${BASEURL}/posts`);  
-      let data = await res.json();
+      const res = await fetch(`${BASEURL}/posts`);  
+      const data = await res.json();
       setPosts(data);
       setFilteredPosts(data);
      
-    } catch (error: any) {
+    } catch (error:any) {
       console.log(error);
-      setError(error.message || 'Something went wrong while fetching posts.');
+      setError(error?.message || 'Something went wrong while fetching posts.');
     }
   };
 
@@ -30,24 +30,24 @@ export default function PostHook() {
 
  
   useEffect(() => {
-    let results = posts.filter((post:post) =>
+    const results = posts.filter((post:post) =>
       post.title.toLowerCase().includes(query.toLowerCase())
     );
     setFilteredPosts(results);
   }, [query, posts]);
 
  
-  let handlePageChange = (page: number) => {
+  const handlePageChange = (page: number) => {
     setCurrentPage(page);
   };
 
   
-  let paginatedPosts = filteredPosts.slice(
+  const paginatedPosts = filteredPosts.slice(
     (currentPage - 1) * itemsPerPage,
     currentPage * itemsPerPage
   );
 
   
-  let totalPages = Math.ceil(filteredPosts.length / itemsPerPage);
+  const totalPages = Math.ceil(filteredPosts.length / itemsPerPage);
   return {totalPages , paginatedPosts , handlePageChange  , query , posts , error ,setQuery , currentPage }
 }
