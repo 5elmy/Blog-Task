@@ -5,7 +5,7 @@ import PostHook from '../hooks/post.hook';
 export default function Posts() {
 
 
-let {totalPages , paginatedPosts , handlePageChange  , query  , error ,setQuery , currentPage } = PostHook()
+const {totalPages , paginatedPosts , handlePageChange  , query  , error ,setQuery , currentPage } = PostHook()
 
   return (
     <section className='p-8'>
