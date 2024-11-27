@@ -1,5 +1,6 @@
 import React from 'react'
 import { comment } from '../Interfaces';
+import Image from 'next/image';
 
 export default function CommentForPost({comments}:{comments:comment[]}) {
   return (
@@ -13,7 +14,7 @@ export default function CommentForPost({comments}:{comments:comment[]}) {
            
 
 <div className="md:flex items-center gap-x-2 col-span-4 md:col-span-3">
-        <img className="object-cover w-10 h-10 rounded-full" src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=faceare&facepad=3&w=688&h=688&q=100" alt=""/>
+        <Image className="object-cover w-10 h-10 rounded-full" src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=faceare&facepad=3&w=688&h=688&q=100" alt="img"/>
         
         <div>
             <h1 className="text-[10px] md:text-[14px] font-semibold text-gray-700 capitalize dark:text-white">{comment.name.split(' ').slice(0,3).join(' ')}</h1>

@@ -18,6 +18,7 @@ export default function PostHook() {
       setFilteredPosts(data);
      
     } catch (error) {
+     console.log(error);
      
       setError('Something went wrong while fetching posts.');
     }
