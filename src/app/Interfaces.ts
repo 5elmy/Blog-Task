@@ -11,7 +11,7 @@ export interface comment {
     body:string
 
 }
-export interface params {params:{postId:number}}
+export interface params {params:{postId:string | number}}
 
 export interface PostDetailsHookResponse {
     post: post;
