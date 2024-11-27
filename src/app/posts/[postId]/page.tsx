@@ -1,29 +1,65 @@
+// import ButtonNavigate from "@/app/components/ButtonNavigate";
+// import CommentForPost from "@/app/components/comment.component";
+// import PostSlice from "@/app/components/postSlice";
+// import PostDetailsHook from "@/app/hooks/postDetails.hook";
+// import {  comment, params, post } from "@/app/Interfaces";
+// import React from "react";
+
+// export default async function PostDetails({ params }:params) {
+//     const{ postId } = await params;
+// const {post , comments }:{post:post , comments:comment[]} = await PostDetailsHook({postId})
+//   return (
+//     <section className=" relative">
+//             <ButtonNavigate button=" GO TO HOME"/>
+         
+
+//         {post && comments.length>0 ? <>
+//         <PostSlice post={post}/>
+//       <CommentForPost comments={comments} />
+//         </>  : 
+//          <div  className='min-h-screen  flex justify-center items-center'>
+
+//          <span className="loader"></span>
+//      </div>
+//         }
+   
+//     </section>
+//   );
+// }
+
+
 import ButtonNavigate from "@/app/components/ButtonNavigate";
 import CommentForPost from "@/app/components/comment.component";
 import PostSlice from "@/app/components/postSlice";
 import PostDetailsHook from "@/app/hooks/postDetails.hook";
-import {  comment, params, post } from "@/app/Interfaces";
+import { comment, post } from "@/app/Interfaces";
 import React from "react";
 
-export default async function PostDetails({ params }:params) {
-    const{ postId } = await params;
-const {post , comments }:{post:post , comments:comment[]} = await PostDetailsHook({postId})
+// Define the type for params
+interface Params {
+  params: {
+    postId: string; // Define the structure of the postId as a string
+  };
+}
+
+export default async function PostDetails({ params }: Params) {
+  const { postId } = params; // Extract postId directly from params
+  const { post, comments }: { post: post; comments: comment[] } = await PostDetailsHook({ postId });
+
   return (
-    <section className=" relative">
-            <ButtonNavigate button=" GO TO HOME"/>
-         
+    <section className="relative">
+      <ButtonNavigate button=" GO TO HOME" />
 
-        {post && comments.length>0 ? <>
-        <PostSlice post={post}/>
-      <CommentForPost comments={comments} />
-        </>  : 
-         <div  className='min-h-screen  flex justify-center items-center'>
-
-         <span className="loader"></span>
-     </div>
-        }
-   
+      {post && comments.length > 0 ? (
+        <>
+          <PostSlice post={post} />
+          <CommentForPost comments={comments} />
+        </>
+      ) : (
+        <div className="min-h-screen flex justify-center items-center">
+          <span className="loader"></span>
+        </div>
+      )}
     </section>
   );
 }
-

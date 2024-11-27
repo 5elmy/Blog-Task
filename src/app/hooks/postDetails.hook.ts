@@ -2,7 +2,7 @@
 
 import { BASEURL } from '../Constants/BASEURL';
 
-export default async function PostDetailsHook({postId}:{postId:string | number}) {
+export default async function PostDetailsHook({postId}:{postId:string }) {
 
 
 
