@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function Paginate({currentPage , handlePageChange ,totalPages }:{currentPage:number , handlePageChange:any ,totalPages:number }) {
+export default function Paginate({currentPage , handlePageChange ,totalPages }:{currentPage:number , handlePageChange: (page: number) => void ,totalPages:number }) {
   return (
 
 
